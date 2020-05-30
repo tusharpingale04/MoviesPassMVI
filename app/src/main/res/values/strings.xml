@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">The Movies Pass</string>
+    <string name="login">Login</string>
+    <string name="field_password">Password</string>
+    <string name="field_login">Login</string>
+    <string name="field_username">Username</string>
+    <string name="email_field">Email</string>
+    <string name="proceed_to_login">Proceed to Login</string>
+    <string name="guest_login">Guest login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="account">My Account</string>
+    <string name="label_series">Series</string>
+    <string name="text_success">Success</string>
+    <string name="text_ok">OK</string>
+    <string name="text_error">Error</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="label_favorites">Favorites</string>
+    <string name="label_movies">Movies</string>
+    <string name="label_movie_details">Movie Details</string>
+    <string name="label_favorite_movies">Favorite Movies</string>
+    <string name="label_watchlist">WatchList</string>
+    <string name="logout">Logout</string>
+    <string name="label_account">Account</string>
+    <string name="text_read_more">Read More…</string>
+    <string name="title_similar_movies">Similar Movies</string>
+    <string name="search">Search</string>
+</resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

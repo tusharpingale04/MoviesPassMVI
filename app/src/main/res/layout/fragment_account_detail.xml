@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nested_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:clipToPadding="false"
+    android:scrollbars="none"
+    android:scrollingCache="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/v_top"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey_5"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/avatar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/photo_female_5"
+            app:civ_border="true"
+            app:civ_border_color="@color/yellow_700"
+            app:civ_border_width="2dp"
+            app:civ_shadow="true"
+            app:civ_shadow_radius="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_top" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/black"
+            app:fontFamily="sans-serif-medium"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/avatar"
+            app:layout_constraintStart_toEndOf="@+id/avatar"
+            app:layout_constraintTop_toTopOf="@+id/avatar"
+            tools:text="Sarah Scott"
+            android:layout_marginLeft="16dp" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/avatar"
+            android:text="@string/logout"
+            android:background="@drawable/btn_selector_red"
+            android:textColor="@color/grey1"
+            android:layout_margin="16dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

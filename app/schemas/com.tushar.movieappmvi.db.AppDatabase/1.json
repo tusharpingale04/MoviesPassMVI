@@ -1,0 +1,210 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "a4ed67dc5d38d227597f5967c1374b60",
+    "entities": [
+      {
+        "tableName": "account_properties",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `username` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "username",
+            "columnName": "username",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "auth_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`account_id` INTEGER, `session_id` TEXT, PRIMARY KEY(`account_id`), FOREIGN KEY(`account_id`) REFERENCES `account_properties`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "account_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "token",
+            "columnName": "session_id",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "account_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "account_properties",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "account_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "movie_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `original_title` TEXT NOT NULL, `overview` TEXT NOT NULL, `vote_average` REAL NOT NULL, `release_date` TEXT NOT NULL, `poster_path` TEXT, `backdrop_path` TEXT, `popularity` REAL NOT NULL, `vote_count` INTEGER NOT NULL, `timestamp_in_millis` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "originalTitle",
+            "columnName": "original_title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "overview",
+            "columnName": "overview",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "voteAverage",
+            "columnName": "vote_average",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "releaseDate",
+            "columnName": "release_date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "posterPath",
+            "columnName": "poster_path",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "backdropPath",
+            "columnName": "backdrop_path",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "popularity",
+            "columnName": "popularity",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "voteCount",
+            "columnName": "vote_count",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp_in_millis",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "keyword_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `keywords` TEXT, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "keywords",
+            "columnName": "keywords",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "similar_movies_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `similar_movies` TEXT, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "similarMovies",
+            "columnName": "similar_movies",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a4ed67dc5d38d227597f5967c1374b60')"
+    ]
+  }
+}
