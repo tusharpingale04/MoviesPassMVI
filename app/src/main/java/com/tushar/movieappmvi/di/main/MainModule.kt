@@ -3,8 +3,10 @@ package com.tushar.movieappmvi.di.main
 import com.tushar.movieappmvi.api.main.MainApiService
 import com.tushar.movieappmvi.db.AccountPropertiesDao
 import com.tushar.movieappmvi.db.AppDatabase
+import com.tushar.movieappmvi.db.FavoritesDao
 import com.tushar.movieappmvi.db.MovieDao
 import com.tushar.movieappmvi.repository.main.AccountRepository
+import com.tushar.movieappmvi.repository.main.FavoritesRepository
 import com.tushar.movieappmvi.repository.main.MoviesRepository
 import com.tushar.movieappmvi.session.SessionManager
 import dagger.Module
@@ -46,5 +48,22 @@ class MainModule{
     ) : MoviesRepository{
         return MoviesRepository(mainApiService,movieDao,sessionManager)
     }
+
+    @MainScope
+    @Provides
+    fun provideFavorites(appDatabase: AppDatabase): FavoritesDao{
+        return appDatabase.getFavoriteMovie()
+    }
+
+    @MainScope
+    @Provides
+    fun provideFavoritesRepository(
+        sessionManager: SessionManager,
+        favoriteDao: FavoritesDao,
+        mainApiService: MainApiService
+    ) : FavoritesRepository{
+        return FavoritesRepository(sessionManager,favoriteDao,mainApiService)
+    }
+
 
 }

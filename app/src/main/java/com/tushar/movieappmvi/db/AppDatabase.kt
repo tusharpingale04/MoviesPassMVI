@@ -8,13 +8,14 @@ import com.tushar.movieappmvi.models.*
 import javax.inject.Inject
 
 @Database(entities = [AccountProperties::class,AuthToken::class,
-    Movie::class, KeywordModel::class, SimilarMoviesModel::class], version = 1)
+    Movie::class, KeywordModel::class, SimilarMoviesModel::class, FavoriteMovie::class], version = 1)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase(){
 
     abstract fun getAccountProperties() : AccountPropertiesDao
     abstract fun getAuthToken() : AuthTokenDao
     abstract fun getMovie() : MovieDao
+    abstract fun getFavoriteMovie() : FavoritesDao
 
     companion object{
         const val DATABASE_NAME = "movie_db"

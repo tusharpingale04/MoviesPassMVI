@@ -37,4 +37,9 @@ interface MainApiService {
     fun getSimilarMovies(
         @Path("movieId") id: String,@Query("page") page: String
     ): LiveData<GenericApiResponse<MovieDetails>>
+
+    @GET("account/account_id/favorite/movies")
+    fun getFavorites(
+        @Query(ApiKeyInterceptor.SESSION_ID) sessionId: String
+    ): LiveData<GenericApiResponse<MovieDetails>>
 }

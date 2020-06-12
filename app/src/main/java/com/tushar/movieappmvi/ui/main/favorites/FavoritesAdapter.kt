@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.*
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.tushar.movieappmvi.R
-import com.tushar.movieappmvi.models.Movie
+import com.tushar.movieappmvi.models.FavoriteMovie
 import com.tushar.movieappmvi.util.ImagePathGenerator
 import kotlinx.android.synthetic.main.row_movie_item.view.*
 
@@ -20,11 +20,11 @@ class FavoritesAdapter(
         const val TAG = "FavoritesAdapter"
     }
 
-    private val diffCallback = object : DiffUtil.ItemCallback<Movie>() {
+    private val diffCallback = object : DiffUtil.ItemCallback<FavoriteMovie>() {
 
-        override fun areItemsTheSame(oldItem: Movie, newItem: Movie) = oldItem.id == newItem.id
+        override fun areItemsTheSame(oldItem: FavoriteMovie, newItem: FavoriteMovie) = oldItem.id == newItem.id
 
-        override fun areContentsTheSame(oldItem: Movie, newItem: Movie) = oldItem == newItem
+        override fun areContentsTheSame(oldItem: FavoriteMovie, newItem: FavoriteMovie) = oldItem == newItem
 
     }
 
@@ -36,7 +36,7 @@ class FavoritesAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return FavoritesViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.row_favorite_item,
+                R.layout.row_movie_item,
                 parent,
                 false
             ),
@@ -78,7 +78,7 @@ class FavoritesAdapter(
         return differ.currentList.size
     }
 
-    fun submitList(movieList: List<Movie>?) {
+    fun submitList(movieList: List<FavoriteMovie>?) {
         differ.submitList(movieList)
     }
 
@@ -89,7 +89,7 @@ class FavoritesAdapter(
         private val interaction: Interaction?
     ) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(item: Movie) = with(itemView) {
+        fun bind(item: FavoriteMovie) = with(itemView) {
             itemView.setOnClickListener {
                 interaction?.onItemSelected(absoluteAdapterPosition, item)
             }
@@ -104,6 +104,6 @@ class FavoritesAdapter(
     }
 
     interface Interaction {
-        fun onItemSelected(position: Int, item: Movie)
+        fun onItemSelected(position: Int, item: FavoriteMovie)
     }
 }
